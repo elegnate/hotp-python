@@ -2,15 +2,16 @@
 import struct, time
 import base64
 
-from Crypto.Hash      import SHA256, HMAC
+from Crypto.Hash import SHA256, HMAC
 
 
 
 class OTP(object):
 
-    def __init__(self, secret, period = 30):
+    def __init__(self, secret, digits = 8, period = 30):
         self.secret = secret
         self.period = period
+        self.digits = digits
 
 
     def Verify(self, code):
@@ -33,7 +34,7 @@ class OTP(object):
 
         pos = digest[19] & 15
         base = struct.unpack('>I', digest[pos:pos + 4])[0] & 0x7fffffff
-        token = base % 100000000
+        token = base % pow(10, digits)
         return token
 
 
