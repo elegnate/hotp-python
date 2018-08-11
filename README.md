@@ -12,6 +12,6 @@ otp = OTP(secret, 180)<br>
 testCode = 123123<br>
 <br>
 if otp.Verify(testCode):<br>
-    // success<br>
-else: {<br>
-    // fail<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// success<br>
+else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// fail<br>
